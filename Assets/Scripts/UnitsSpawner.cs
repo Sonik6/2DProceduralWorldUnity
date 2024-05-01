@@ -13,18 +13,13 @@ public class UnitsSpawner : MonoBehaviour
   public GameObject treeTopPrefab;
   public GameObject treeBottomPrefab;
   
-  private HashSet<Vector2> _objectsSpawnedPositions = new HashSet<Vector2>();
+  private readonly HashSet<Vector2> _objectsSpawnedPositions = new HashSet<Vector2>();
 
   void Start()
   {
     WaveFunction.OnGridFilled += SpawnSprites;
   }
-
-  void OnDestroy()
-  {
-    WaveFunction.OnGridFilled -= SpawnSprites;
-  }
-
+  
   void SpawnSprites()
   {
     for (int i = 0; i < waveFunction.gridComponents.Count; i++)
@@ -71,7 +66,7 @@ public class UnitsSpawner : MonoBehaviour
       
       if (tile.topLeftVertexType == TileType.Grass && tile.topRightVertexType == TileType.Grass && tile.bottomLeftVertexType == TileType.Grass && tile.bottomRightVertexType == TileType.Grass)
       {
-        int randomNumber = UnityEngine.Random.Range(1, 4);
+        int randomNumber = UnityEngine.Random.Range(1, 8);
 
         if (randomNumber == 1 && !_objectsSpawnedPositions.Contains(cell.transform.position))
         {
@@ -79,15 +74,12 @@ public class UnitsSpawner : MonoBehaviour
 
           _objectsSpawnedPositions.Add(cell.transform.position);
 
-          int aboveCellIndex = i - waveFunction.dimensions;
-          if (aboveCellIndex >= 0)
+          int aboveCellIndex = i + waveFunction.dimensions;
+          
+          if (_objectsSpawnedPositions.Contains(cell.transform.position))
           {
-            if (_objectsSpawnedPositions.Contains(cell.transform.position))
-            {
-              Cell aboveCell = waveFunction.gridComponents[aboveCellIndex];
-              Vector2 topTreePosition = aboveCell.transform.position + new Vector3(0, 2); 
-              Instantiate(treeTopPrefab, topTreePosition, Quaternion.identity);
-            }
+            Cell aboveCell = waveFunction.gridComponents[aboveCellIndex];
+            Instantiate(treeTopPrefab, aboveCell.transform.position, Quaternion.identity);
           }
         }
       }
