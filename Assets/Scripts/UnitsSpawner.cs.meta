@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 76ff0f423c82b48b18e1ae61c13db4ff
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - waveFunction: {instanceID: 0}
+  - logPrefab: {fileID: 6000369312184460309, guid: 3ec60b6faead24db39e0d041d0312f6e, type: 3}
+  - mushroomPrefab: {fileID: 6000369312184460309, guid: 3ec60b6faead24db39e0d041d0312f6e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
