@@ -70,7 +70,10 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+<<<<<<< HEAD
 
 .idea/
 .plastic/
 ignore.conf
+=======
+>>>>>>> 6632fe868ba780da2c0ff05e7b4d9ee8fc61b93c
